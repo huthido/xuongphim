@@ -669,6 +669,11 @@ class XuLy(BaseHTTPRequestHandler):
         self.send_header("Content-Length", str(len(than)))
         self.send_header("Cache-Control", "no-store")
         self.send_header("X-Content-Type-Options", "nosniff")
+        if kieu.startswith("text/html"):
+            # cấm trang khác nhúng vào khung (iframe): nếu không, trang lạ có thể che trang /cho_phep và dụ người
+            # dùng bấm "Cho phép" (clickjacking), tự cho phép mình điều khiển Xưởng phim trên máy
+            self.send_header("X-Frame-Options", "DENY")
+            self.send_header("Content-Security-Policy", "frame-ancestors 'none'")
         for k, gt in (them or {}).items():
             self.send_header(k, gt)
         self.end_headers()

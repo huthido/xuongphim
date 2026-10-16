@@ -78,4 +78,6 @@ Các mô hình và chương trình do trình cài tải về từ nguồn gốc,
 | VieNeu-TTS | xem trang của dự án |
 | FLUX.2 klein 4B | Apache 2.0 |
 
-Kho này chưa kèm tệp giấy phép cho phần mã của Xưởng phim.
+## Giấy phép
+
+Mã của Xưởng phim (kho này) phát hành theo giấy phép **MIT**: xem tệp `LICENSE`. Bản quyền © 2026 Huthido. Giấy phép MIT không áp dụng cho các mô hình và chương trình bên thứ ba ở bảng trên; mỗi thành phần theo giấy phép riêng của nó.
