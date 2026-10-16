@@ -1,0 +1,58 @@
+{
+ "ghi_chu": "Danh mục mô hình của Xưởng phim. 'tep': mọi tệp có thể tải (đường dẫn tính từ <ROOT>/tao_video_amd/models). 'video': các lựa chọn tạo video; 'bo_nho_gb' là bộ nhớ mô hình chiếm khi chạy ('do' = đã đo, 'uoc' = ước theo kích thước tệp). Thêm mô hình: thêm tệp vào 'tep' và một mục vào 'video'.",
+ "sd_cli": {
+  "phien_ban": "master-964-1d0a58a",
+  "url": "https://github.com/leejet/stable-diffusion.cpp/releases/download/master-964-1d0a58a/",
+  "goi": {
+   "win32-vulkan": ["sd-master-1d0a58a-bin-win-vulkan-x64.zip", "74211cb5c382aec2aeb086b64f2fdf525efec5faec4200a2d3257bc2328954ab"],
+   "win32-cpu": ["sd-master-1d0a58a-bin-win-cpu-x64.zip", "8e4e7bde781ff246817019a182040a087314caf4d21bc15fe4ff045167bd336d"],
+   "win32-cuda": ["sd-master-1d0a58a-bin-win-cuda12-x64.zip", "2f08572e143f0b15a764197ea937d219dd70f0cc7eefb30eb84c9dae6a7cba6d"],
+   "linux-vulkan": ["sd-master-1d0a58a-bin-Linux-Ubuntu-24.04-x86_64-vulkan.zip", "bade142929edfa7aad56aba46376e55142d14390262b904f4a2deb3a03ceb21d"],
+   "linux-cpu": ["sd-master-1d0a58a-bin-Linux-Ubuntu-24.04-x86_64.zip", "2c2e6d4c0ad6a183283bda586e6e42c946eebfd9019278405d31763920ac36fa"],
+   "linux-rocm": ["sd-master-1d0a58a-bin-Linux-Ubuntu-24.04-x86_64-rocm-10.1.0.zip", "a00fcd3233e8acfc8f5aadb0a1ab4e137a37d05dc61e2a37ddf94d7232b121ca"],
+   "darwin-metal": ["sd-master-1d0a58a-bin-Darwin-macOS-26.6.2-arm64.zip", "45001839e925f98ecd18ef5251725f74cff874eeac4599f1136acba65b26911e"]
+  }
+ },
+ "tep": {
+  "umt5_q5": {"duong_dan": "umt5-xxl-encoder-Q5_K_M.gguf", "co": 4145878880, "sha256": "eaea358bb438c5d211721a4feecc162000e3636e9cb96f51e216f1f44ebd12ce",
+              "url": "https://huggingface.co/city96/umt5-xxl-encoder-gguf/resolve/b535255bee98c2b0a59ea7c0ae2dcd0c6657b3b7/umt5-xxl-encoder-Q5_K_M.gguf"},
+  "umt5_q8": {"duong_dan": "umt5-xxl-encoder-Q8_0.gguf", "co": 6043068256, "sha256": "2521d4de0bf9e1cc6549866463ceae85e4ec3239bc6063f7488810be39033bbc",
+              "url": "https://huggingface.co/city96/umt5-xxl-encoder-gguf/resolve/b535255bee98c2b0a59ea7c0ae2dcd0c6657b3b7/umt5-xxl-encoder-Q8_0.gguf"},
+  "wan22_q4": {"duong_dan": "wan22/Wan2_2-TI2V-5B-Turbo-Q4_K_M.gguf", "co": 3437927136, "sha256": "13b3bee8fcafd9f9a3778ed1a0ca973f4a7d152094ea305f8384b0abd7e1ad51",
+               "url": "https://huggingface.co/hum-ma/Wan2.2-TI2V-5B-Turbo-GGUF/resolve/9873ba175b4b204a81f4a43c9644e6c385ee4459/Wan2_2-TI2V-5B-Turbo-Q4_K_M.gguf"},
+  "wan22_q6": {"duong_dan": "wan22/Wan2_2-TI2V-5B-Turbo-Q6_K.gguf", "co": 4216494816, "sha256": "bca1319bae8783c6e7663d82f7b929e1c009961260766ce1f0f60dfd65c29de6",
+               "url": "https://huggingface.co/hum-ma/Wan2.2-TI2V-5B-Turbo-GGUF/resolve/9873ba175b4b204a81f4a43c9644e6c385ee4459/Wan2_2-TI2V-5B-Turbo-Q6_K.gguf"},
+  "wan22_q8": {"duong_dan": "wan22/Wan2_2-TI2V-5B-Turbo-Q8_0.gguf", "co": 5404990176, "sha256": "b4d7d1888d5ec2c29046cc443239faad99614cd3d356c61d8192fcac5f4c98fc",
+               "url": "https://huggingface.co/hum-ma/Wan2.2-TI2V-5B-Turbo-GGUF/resolve/9873ba175b4b204a81f4a43c9644e6c385ee4459/Wan2_2-TI2V-5B-Turbo-Q8_0.gguf"},
+  "taew2_2": {"duong_dan": "wan22/taew2_2.safetensors", "co": 22848048, "sha256": "b84609b2a133d48434bd9636bfcb44bf05168dc436e2d3cecf26256faa1f5325",
+              "url": "https://github.com/madebyollin/taehv/raw/011dfc2112197741c540e0bdd5b7b67bcc930771/safetensors/taew2_2.safetensors"},
+  "wan21_fp16": {"duong_dan": "wan2.1_t2v_1.3B_fp16.safetensors", "co": 2838303560, "sha256": "be531024cd9018cb5b48c40cfbb6a6191645b1c792eb8bf4f8c1c6e10f924dc5",
+                 "url": "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/123acf1cc74bccbb9bfff8ac1ee72edc08c2341d/split_files/diffusion_models/wan2.1_t2v_1.3B_fp16.safetensors"},
+  "taew2_1": {"duong_dan": "taew2_1.safetensors", "co": 22642902, "sha256": "04766eac0221b5390b985ae3fdcca652cbb4b1e8b82b28ea7ff89dfad1b1a93f",
+              "url": "https://github.com/madebyollin/taehv/raw/011dfc2112197741c540e0bdd5b7b67bcc930771/safetensors/taew2_1.safetensors"},
+  "causvid": {"duong_dan": "loras/Wan21_CausVid_bidirect2_T2V_1_3B_lora_rank32.safetensors", "co": 91233416, "sha256": "8e5331e780ffb16520bf1ff7ba90188ebd271a4698e5be8e618800e809cca704",
+              "url": "https://huggingface.co/Kijai/WanVideo_comfy/resolve/8260d429d19fd7a72304cad059160b95d843913f/Wan21_CausVid_bidirect2_T2V_1_3B_lora_rank32.safetensors"}
+ },
+ "video": [
+  {"id": "wan22_5b_q8", "ten": "Wan2.2 5B Turbo · Q8_0 + umT5 Q8", "ho": "wan22", "chat_luong": 4,
+   "diffusion": "wan22_q8", "t5": "umt5_q8", "tae": "taew2_2", "bo_nho_gb": 11.5, "nguon_so": "uoc", "da_thu": false,
+   "mo_ta": "gần như không mất chất lượng so với bản gốc; cần máy mạnh"},
+  {"id": "wan22_5b_q6", "ten": "Wan2.2 5B Turbo · Q6_K", "ho": "wan22", "chat_luong": 3,
+   "diffusion": "wan22_q6", "t5": "umt5_q5", "tae": "taew2_2", "bo_nho_gb": 8.2, "nguon_so": "uoc", "da_thu": false,
+   "mo_ta": "nét hơn Q4 một chút, nặng hơn khoảng 1 GB"},
+  {"id": "wan22_5b_q4", "ten": "Wan2.2 5B Turbo · Q4_K_M", "ho": "wan22", "chat_luong": 2,
+   "diffusion": "wan22_q4", "t5": "umt5_q5", "tae": "taew2_2", "bo_nho_gb": 7.3, "nguon_so": "do", "da_thu": true,
+   "mo_ta": "đã chạy thật trên Intel Iris Xe, 16 GB RAM: 640x352, 5 giây trong khoảng 10 phút"},
+  {"id": "wan21_13b", "ten": "Wan2.1 1.3B + CausVid", "ho": "wan21", "chat_luong": 1,
+   "diffusion": "wan21_fp16", "t5": "umt5_q5", "tae": "taew2_1", "lora": "causvid", "bo_nho_gb": 6.9, "nguon_so": "do", "da_thu": true,
+   "mo_ta": "nhẹ nhất; chỉ tạo từ lời mô tả, không giữ mặt nhân vật"}
+ ],
+ "kich_thuoc": {
+  "wan22": [[1280, 704], [832, 480], [640, 352]],
+  "wan21": [[832, 480], [512, 288]]
+ },
+ "bo_nho_lam_viec": {
+  "ghi_chu": "Bộ nhớ dùng thêm khi tạo 121 khung (wan22) hoặc 81 khung (wan21), tính theo số điểm ảnh so với 832x480. Ước từ lần đo 832x480x121 trên máy gốc (tiến trình xin khoảng 19 GB, trong đó mô hình 7,3 GB).",
+  "gb_o_832x480": {"wan22": 12.0, "wan21": 4.0}
+ }
+}

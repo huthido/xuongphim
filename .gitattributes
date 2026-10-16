@@ -1,0 +1,12 @@
+* text=auto
+*.sh text eol=lf
+*.bat text eol=crlf
+*.png binary
+*.mp4 binary
+*.mp3 binary
+# hướng dẫn ghi kích thước và SHA256 của các tệp này: giữ nguyên từng byte, không đổi kiểu xuống dòng
+tao_video/*.py -text
+tao_video/*.txt -text
+tao_video_amd/tao_video_sd.py -text
+tao_video_amd/tao_video_amd.ps1 -text
+long_tieng/long_tieng_lock.txt -text

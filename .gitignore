@@ -1,0 +1,21 @@
+# mô hình và chương trình tải về (cai_dat.py tự tải)
+*.gguf
+*.safetensors
+tao_video_amd/sd/
+tao_video_amd/models/
+*.part
+# môi trường Python
+env/
+__pycache__/
+*.pyc
+# dữ liệu khi chạy Xưởng phim trên máy
+xuong_phim/san_pham/
+xuong_phim/viec/
+xuong_phim/.may_chu.json
+xuong_phim/cau_hinh.json
+xuong_phim/nguon_cho_phep.json
+xuong_phim/may_chu_log.txt
+# khác
+*.zip
+.DS_Store
+Thumbs.db

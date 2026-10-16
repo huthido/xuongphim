@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "xuong-phim": {
+      "command": "C:/Users/<ten>/AI/long_tieng/env/Scripts/python.exe",
+      "args": ["-I", "C:/Users/<ten>/AI/xuong_phim/mcp_xuong_phim.py"]
+    }
+  }
+}

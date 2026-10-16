@@ -1,0 +1,12 @@
+[
+ {
+  "prompt": "Photorealistic real footage, close-up portrait of an elderly 75-year-old Vietnamese grandmother with a deeply wrinkled face, thin white-gray hair pulled back, wearing a brown blouse, sitting at a wooden kitchen table, she looks toward the right side of the frame, smiles warmly and speaks softly, nodding slowly. Soft natural window light from the left, blurred green plants in the background, shallow depth of field, 35mm film, natural skin texture with age spots, warm tones",
+  "out": "<ROOT>/tao_video/thu/ba_chau/ba.mp4",
+  "w": 512, "h": 288, "frames": 81, "seed": 11
+ },
+ {
+  "prompt": "Photorealistic real footage, close-up portrait of a cute eight-year-old Vietnamese girl with black shoulder-length hair and bangs, wearing a white t-shirt, sitting at a wooden kitchen table, she looks toward the left side of the frame listening attentively, then her eyes light up and she laughs happily. Soft natural window light, blurred green plants in the background, shallow depth of field, 35mm film, natural skin texture, warm tones",
+  "out": "<ROOT>/tao_video/thu/ba_chau/chau.mp4",
+  "w": 512, "h": 288, "frames": 81, "seed": 12
+ }
+]

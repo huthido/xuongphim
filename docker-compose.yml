@@ -1,0 +1,13 @@
+# Coolify: New Resource → Docker Compose (từ kho GitHub này). Coolify tự gán tên miền HTTPS cho cổng 80.
+# Chỉ là giao diện tĩnh; Xưởng phim thật vẫn chạy trên máy từng người dùng (xem README).
+services:
+  xuong-phim:
+    build: .
+    environment:
+      - SERVICE_URL_XUONG_PHIM_80
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3

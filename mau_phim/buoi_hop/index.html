@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1280, height=720" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;700;800&family=Lora:ital,wght@1,500&display=block"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"
+      integrity="sha384-sG0Hv1tP1lZCk9KQmrIbY/XNwi+OY84GQqhMscbnsoBFqAz8KNCil1kvfL3Hbbk2"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; overflow: hidden; background: #1b120c; }
+      #root {
+        position: relative; width: 100%; height: 100%; overflow: hidden;
+        font-family: "Be Vietnam Pro", system-ui, sans-serif; color: #fff8ec;
+      }
+      .clip { position: absolute; inset: 0; width: 100%; height: 100%; }
+      video.clip { object-fit: cover; opacity: 0; transform-origin: 50% 50%; }
+
+      /* Thẻ mở đầu và kết thúc */
+      .card {
+        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px;
+        background: radial-gradient(ellipse at 50% 40%, #6b3d1f 0%, #3a2112 55%, #1b120c 100%);
+        opacity: 0;
+      }
+      .card .eyebrow { font-family: "Lora", serif; font-style: italic; font-size: 30px; color: #f3c98b; opacity: 0; }
+      .card h1 { font-size: 92px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; text-align: center; }
+      .card h1 span { display: inline-block; opacity: 0; }
+      .card .rule { width: 0; height: 3px; background: #f3c98b; border-radius: 2px; }
+      .card .small { font-size: 22px; font-weight: 500; color: #e9d6bd; opacity: 0; text-align: center; line-height: 1.6; }
+
+      /* Phụ đề */
+      .cap {
+        position: absolute; inset: auto auto 46px 50%; width: auto; height: auto; transform: translateX(-50%);
+        max-width: 1060px; padding: 12px 28px; border-radius: 14px;
+        background: rgba(20, 12, 6, 0.62); font-size: 34px; font-weight: 700; line-height: 1.3;
+        text-align: center; white-space: nowrap; opacity: 0; z-index: 50;
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+      }
+      .cap b { color: #ffd27a; font-weight: 800; }
+
+      /* Cảnh bản đồ */
+      #map { background: #f6e7c8; opacity: 0; z-index: 40; }
+      #map svg { position: absolute; inset: 0; }
+      #map .label { position: absolute; font-size: 30px; font-weight: 800; color: #4a2b14; opacity: 0; }
+      #map h2 {
+        position: absolute; top: 56px; width: 100%; text-align: center; font-size: 58px; font-weight: 800;
+        color: #b4441f; opacity: 0;
+      }
+      #vignette {
+        position: absolute; inset: 0; pointer-events: none; z-index: 45;
+        background: radial-gradient(ellipse at center, rgba(0,0,0,0) 60%, rgba(25,12,4,0.38) 100%);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="65" data-width="1280" data-height="720">
+      <!-- 12 cảnh, mỗi cảnh 5 giây, chồng nhau 0,5 giây để hoà tan -->
+      <video id="v1" class="clip" data-start="3" data-duration="5" muted playsinline src="media/canh_01.mp4" style="z-index:1"></video>
+      <video id="v2" class="clip" data-start="7.5" data-duration="5" muted playsinline src="media/canh_02.mp4" style="z-index:2"></video>
+      <video id="v3" class="clip" data-start="12" data-duration="5" muted playsinline src="media/canh_03.mp4" style="z-index:3"></video>
+      <video id="v4" class="clip" data-start="16.5" data-duration="5" muted playsinline src="media/canh_04.mp4" style="z-index:4"></video>
+      <video id="v5" class="clip" data-start="21" data-duration="5" muted playsinline src="media/canh_05.mp4" style="z-index:5"></video>
+      <video id="v6" class="clip" data-start="25.5" data-duration="5" muted playsinline src="media/canh_06.mp4" style="z-index:6"></video>
+      <video id="v7" class="clip" data-start="30" data-duration="5" muted playsinline src="media/canh_07.mp4" style="z-index:7"></video>
+      <video id="v8" class="clip" data-start="38.5" data-duration="5" muted playsinline src="media/canh_08.mp4" style="z-index:8"></video>
+      <video id="v9" class="clip" data-start="43" data-duration="5" muted playsinline src="media/canh_09.mp4" style="z-index:9"></video>
+      <video id="v10" class="clip" data-start="47.5" data-duration="5" muted playsinline src="media/canh_10.mp4" style="z-index:10"></video>
+      <video id="v11" class="clip" data-start="52" data-duration="5" muted playsinline src="media/canh_11.mp4" style="z-index:11"></video>
+      <video id="v12" class="clip" data-start="56.5" data-duration="5" muted playsinline src="media/canh_12.mp4" style="z-index:12"></video>
+
+      <div id="vignette" class="clip" data-start="3" data-duration="58.5"></div>
+
+      <!-- Mở đầu -->
+      <div id="intro" class="clip card" data-start="0" data-duration="3.6" style="z-index:60">
+        <div class="eyebrow">Một chiều chủ nhật</div>
+        <h1><span>Buổi</span> <span>họp</span> <span>gia</span> <span>đình</span></h1>
+        <div class="rule"></div>
+      </div>
+
+      <!-- Bản đồ -->
+      <div id="map" class="clip" data-start="34.5" data-duration="4.5">
+        <h2>Hè này ta đi biển!</h2>
+        <svg viewBox="0 0 1280 720" width="1280" height="720">
+          <!-- biển -->
+          <path id="sea" d="M900 720 C 960 600 1040 520 1280 470 L1280 720 Z" fill="#7cc4d8" opacity="0" />
+          <path id="wave1" d="M1000 610 q 30 -18 60 0 t 60 0 t 60 0" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round" opacity="0" />
+          <path id="wave2" d="M1060 670 q 30 -18 60 0 t 60 0 t 60 0" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round" opacity="0" />
+          <!-- mặt trời -->
+          <circle id="sun" cx="1130" cy="330" r="46" fill="#ffb648" opacity="0" />
+          <!-- nhà -->
+          <g id="house" opacity="0">
+            <polygon points="170,470 260,395 350,470" fill="#c0532a" />
+            <rect x="192" y="468" width="136" height="104" fill="#fff4dc" stroke="#4a2b14" stroke-width="4" />
+            <rect x="244" y="512" width="34" height="60" fill="#8a5a33" />
+          </g>
+          <!-- đường đi -->
+          <path id="route" d="M300 520 C 470 640 560 330 760 420 S 960 600 1060 520"
+                stroke="#b4441f" stroke-width="9" fill="none" stroke-linecap="round" stroke-dasharray="1400" stroke-dashoffset="1400" />
+          <circle id="pin" cx="1060" cy="520" r="18" fill="#b4441f" opacity="0" />
+        </svg>
+        <div class="label" id="lbl-home" style="left:190px; top:590px">Nhà mình</div>
+        <div class="label" id="lbl-sea" style="left:990px; top:400px">Biển</div>
+      </div>
+
+      <!-- Kết -->
+      <div id="outro" class="clip card" data-start="61" data-duration="4" style="z-index:60">
+        <div class="eyebrow">Cả nhà cùng đi!</div>
+        <h1><span>Hết</span></h1>
+        <div class="rule"></div>
+        <div class="small">Hình ảnh tạo bằng Wan2.1 · Dựng bằng HyperFrames</div>
+      </div>
+
+      <!-- Lời kể (VieNeu-TTS: Ngọc Linh kể, Thanh Bình là ông, Đoan Trang là bà) -->
+      <audio id="loi-n00" data-start="0.9" data-duration="1.2" data-volume="1" src="media/loi/n00.mp3"></audio>
+      <audio id="loi-n01" data-start="4.1" data-duration="2.5" data-volume="1" src="media/loi/n01.mp3"></audio>
+      <audio id="loi-n02" data-start="8.3" data-duration="1.6" data-volume="1" src="media/loi/n02.mp3"></audio>
+      <audio id="loi-n03" data-start="12.8" data-duration="2.3" data-volume="1" src="media/loi/n03.mp3"></audio>
+      <audio id="loi-n04" data-start="17.3" data-duration="2.4" data-volume="1" src="media/loi/n04.mp3"></audio>
+      <audio id="loi-n05" data-start="21.8" data-duration="1.8" data-volume="1" src="media/loi/n05.mp3"></audio>
+      <audio id="loi-n06" data-start="26.3" data-duration="1.6" data-volume="1" src="media/loi/n06.mp3"></audio>
+      <audio id="loi-n07" data-start="30.8" data-duration="1.6" data-volume="1" src="media/loi/n07.mp3"></audio>
+      <audio id="loi-ong" data-start="35.3" data-duration="2.0" data-volume="1" src="media/loi/ong.mp3"></audio>
+      <audio id="loi-n08" data-start="39.3" data-duration="1.6" data-volume="1" src="media/loi/n08.mp3"></audio>
+      <audio id="loi-n09" data-start="43.8" data-duration="2.2" data-volume="1" src="media/loi/n09.mp3"></audio>
+      <audio id="loi-n10" data-start="48.3" data-duration="0.9" data-volume="1" src="media/loi/n10.mp3"></audio>
+      <audio id="loi-ba" data-start="49.45" data-duration="1.2" data-volume="1" src="media/loi/ba.mp3"></audio>
+      <audio id="loi-n11" data-start="52.8" data-duration="2.2" data-volume="1" src="media/loi/n11.mp3"></audio>
+      <audio id="loi-n12" data-start="57.3" data-duration="1.8" data-volume="1" src="media/loi/n12.mp3"></audio>
+
+      <!-- Phụ đề -->
+      <div class="cap clip" id="c1" data-start="4" data-duration="3.8">Chiều chủ nhật, cả nhà quây quần bên bàn trà.</div>
+      <div class="cap clip" id="c2" data-start="8.2" data-duration="3.8"><b>Bà</b> rót trà mời cả nhà.</div>
+      <div class="cap clip" id="c3" data-start="12.7" data-duration="3.8"><b>Bố</b> có một tin vui muốn bàn với mọi người.</div>
+      <div class="cap clip" id="c4" data-start="17.2" data-duration="3.8"><b>Mẹ</b> mỉm cười, như đã đoán ra từ trước.</div>
+      <div class="cap clip" id="c5" data-start="21.7" data-duration="3.8"><b>Cu Bin</b> háo hức giơ tay đầu tiên.</div>
+      <div class="cap clip" id="c6" data-start="26.2" data-duration="3.8"><b>Bé Na</b> thì cười không ngớt.</div>
+      <div class="cap clip" id="c7" data-start="30.7" data-duration="3.8"><b>Ông</b> chỉ vào tấm bản đồ…</div>
+      <div class="cap clip" id="c8" data-start="39.2" data-duration="3.8"><b>Bố mẹ</b> cùng vạch đường đi.</div>
+      <div class="cap clip" id="c9" data-start="43.7" data-duration="3.8">Hai anh em chồm lên xem chỗ sắp đến.</div>
+      <div class="cap clip" id="c10" data-start="48.2" data-duration="3.8"><b>Bà</b> ôm cháu: “Cả nhà cùng đi!”</div>
+      <div class="cap clip" id="c11" data-start="52.7" data-duration="3.8">Cả nhà nâng tách trà chúc cho chuyến đi.</div>
+      <div class="cap clip" id="c12" data-start="57.2" data-duration="3.6">Một buổi họp gia đình thật ấm áp.</div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // Mở đầu
+      tl.to("#intro", { opacity: 1, duration: 0.4 }, 0)
+        .to("#intro .eyebrow", { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 0.3)
+        .fromTo("#intro h1 span", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.14, ease: "back.out(1.6)" }, 0.5)
+        .to("#intro .rule", { width: 260, duration: 0.7, ease: "power2.inOut" }, 1.2)
+        .to("#intro", { opacity: 0, duration: 0.6, ease: "power1.in" }, 3.0);
+
+      // Cảnh: hoà tan vào 0,5 giây. Không đặt transform lên <video>: khung hình bị lệch khi kết xuất.
+      const canh = [[1, 3], [2, 7.5], [3, 12], [4, 16.5], [5, 21], [6, 25.5], [7, 30],
+                    [8, 38.5], [9, 43], [10, 47.5], [11, 52], [12, 56.5]];
+      canh.forEach(([n, t], i) => {
+        const sel = "#v" + n;
+        tl.fromTo(sel, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "none" }, t);
+      });
+
+      // Bản đồ
+      tl.fromTo("#map", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 34.5)
+        .fromTo("#map h2", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.6, ease: "back.out(1.7)" }, 34.8)
+        .to("#house", { opacity: 1, duration: 0.4 }, 35.0)
+        .to("#lbl-home", { opacity: 1, duration: 0.4 }, 35.1)
+        .to("#sea", { opacity: 1, duration: 0.5 }, 35.2)
+        .to(["#wave1", "#wave2", "#sun"], { opacity: 1, duration: 0.5, stagger: 0.12 }, 35.4)
+        .to("#route", { strokeDashoffset: 0, duration: 2.0, ease: "power1.inOut" }, 35.5)
+        .fromTo("#pin", { opacity: 0, scale: 0, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 37.4)
+        .to("#lbl-sea", { opacity: 1, duration: 0.4 }, 37.5)
+        .fromTo(["#wave1", "#wave2"], { x: 0 }, { x: -24, duration: 3.5, ease: "sine.inOut" }, 35.5)
+        .to("#map", { opacity: 0, duration: 0.5 }, 38.5);
+
+      // Phụ đề: trượt lên rồi mờ đi
+      document.querySelectorAll(".cap").forEach((el) => {
+        const s = parseFloat(el.dataset.start), d = parseFloat(el.dataset.duration);
+        tl.fromTo(el, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, s)
+          .to(el, { opacity: 0, duration: 0.3 }, s + d - 0.3);
+      });
+
+      // Kết
+      tl.to("#outro", { opacity: 1, duration: 0.6 }, 61)
+        .to("#outro .eyebrow", { opacity: 1, duration: 0.6 }, 61.4)
+        .fromTo("#outro h1 span", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.7, ease: "back.out(1.6)" }, 61.6)
+        .to("#outro .rule", { width: 200, duration: 0.6 }, 62.1)
+        .to("#outro .small", { opacity: 1, duration: 0.6 }, 62.4)
+        .to("#root", { opacity: 0, duration: 0.6 }, 64.4);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

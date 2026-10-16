@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1280, height=720" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@600;800&display=block"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"
+      integrity="sha384-sG0Hv1tP1lZCk9KQmrIbY/XNwi+OY84GQqhMscbnsoBFqAz8KNCil1kvfL3Hbbk2"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1280px; height: 720px; overflow: hidden; background: #000; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Be Vietnam Pro", system-ui, sans-serif; }
+      .clip { position: absolute; inset: 0; width: 100%; height: 100%; }
+      video.clip { object-fit: cover; }
+      .cap {
+        position: absolute; inset: auto auto 42px 50%; width: auto; height: auto; transform: translateX(-50%);
+        padding: 10px 26px; border-radius: 12px; background: rgba(0, 0, 0, 0.55);
+        color: #fff; font-size: 34px; font-weight: 600; white-space: nowrap; opacity: 0; z-index: 20;
+      }
+      .cap b { color: #ffd27a; font-weight: 800; }
+      #bars-top, #bars-bot { position: absolute; left: 0; width: 100%; height: 48px; background: #000; z-index: 10; }
+      #bars-top { top: 0; } #bars-bot { bottom: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="9.3" data-width="1280" data-height="720">
+      <!-- Cắt qua lại giữa hai cận cảnh (bà nhìn sang phải, cháu nhìn sang trái) -->
+      <video id="ba1" class="clip" data-start="0" data-duration="2.2" data-media-start="0.3" muted playsinline src="media/ba.mp4"></video>
+      <video id="chau1" class="clip" data-start="2.2" data-duration="2.3" data-media-start="0.3" muted playsinline src="media/chau.mp4"></video>
+      <video id="ba2" class="clip" data-start="4.5" data-duration="2.4" data-media-start="2.5" muted playsinline src="media/ba.mp4"></video>
+      <video id="chau2" class="clip" data-start="6.9" data-duration="2.4" data-media-start="2.6" muted playsinline src="media/chau.mp4"></video>
+
+      <!-- Viền đen trên dưới cho cảm giác điện ảnh -->
+      <div id="bars-top" class="clip" data-start="0" data-duration="9.3"></div>
+      <div id="bars-bot" class="clip" data-start="0" data-duration="9.3"></div>
+
+      <!-- Lời thoại (VieNeu-TTS: bà = Đoan Trang, cháu = Trúc Ly nâng cao độ) -->
+      <audio id="loi-ba1" data-start="0.15" data-duration="2.0" data-volume="1" src="media/loi/ba1.mp3"></audio>
+      <audio id="loi-chau1" data-start="2.45" data-duration="0.94" data-volume="1" src="media/loi/chau1.mp3"></audio>
+      <audio id="loi-ba2" data-start="4.6" data-duration="2.16" data-volume="1" src="media/loi/ba2.mp3"></audio>
+      <audio id="loi-chau2" data-start="7.05" data-duration="1.9" data-volume="1" src="media/loi/chau2.mp3"></audio>
+
+      <div id="c1" class="cap clip" data-start="0.2" data-duration="2.0"><b>Bà:</b> Hè này bà dẫn cháu đi biển nhé.</div>
+      <div id="c2" class="cap clip" data-start="2.4" data-duration="2.1"><b>Cháu:</b> Thật ạ?</div>
+      <div id="c3" class="cap clip" data-start="4.6" data-duration="2.3"><b>Bà:</b> Thật chứ. Cả nhà mình cùng đi.</div>
+      <div id="c4" class="cap clip" data-start="7.0" data-duration="2.2"><b>Cháu:</b> Cháu thích lắm, bà ơi!</div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      document.querySelectorAll(".cap").forEach((el) => {
+        const s = parseFloat(el.dataset.start), d = parseFloat(el.dataset.duration);
+        tl.fromTo(el, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.25, ease: "power2.out" }, s)
+          .to(el, { opacity: 0, duration: 0.2 }, s + d - 0.2);
+      });
+      tl.fromTo("#root", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0)
+        .to("#root", { opacity: 0, duration: 0.4 }, 8.9);
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
